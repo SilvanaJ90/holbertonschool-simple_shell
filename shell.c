@@ -10,10 +10,12 @@
  * Return: always 0
  */
 
-int main (void)
+int main(void)
 {
 	ssize_t characterRead = 0;
 	char **tokens, *line = NULL;
+	char cmd[100], command[100], *parameters[20];
+	char *envp[] ={(char *) "PATH=/usr/bin", 0};
 	/*int codeExecute = 0;*/
 	/*char *line = NULL;*/
 
@@ -22,8 +24,15 @@ int main (void)
 		_prompt();
 		line = _getline(&characterRead);
 		tokens = _strtok(line, characterRead);
-		write(STDOUT_FILENO,  "$", **tokens);
-		/*if (tokens[0] == NULL)
-			codeExecute = _execute(tokens);*/
+		if (fork() != 0)
+			wait (NULL);
+		else
+		{
+			_strcpy (cmd, "/usr/bin");
+			_strcat(cmd, command);
+			execve(cmd, parameters, envp);
+		}
+		if (_strcmp (command, "exit") == 0 )
+			break;
 	}
 }

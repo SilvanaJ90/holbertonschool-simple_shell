@@ -4,11 +4,13 @@
 #include <string.h>
 #include "main.h"
 /**
- * main - check code
+ * _strtok - check code
+ * @line: value buffer
+ * @characterRead: size buffer
  * Return: always 0
  */
 
-char** _strtok(char *line, ssize_t characterRead)
+char **_strtok(char *line, ssize_t characterRead)
 {
 	char *copy_line = NULL, *token, **argv;
 	char *delim = " \n";

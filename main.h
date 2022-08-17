@@ -7,28 +7,19 @@
 #include <string.h>
 
 int getStringLen(char *str);
-char _prompt();
-char * _getline(ssize_t *characterRead);
-char** _strtok(char *line, ssize_t characterRead);
+char _prompt(void);
+char *_getline(ssize_t *characterRead);
+char **_strtok(char *line, ssize_t characterRead);
 int _execute(char **tokens);
-
-
 
 /*global value*/
 extern char **environ;
-
-
-
-/*typedef struct my_builtins
-{
-char *name;
-int (*func)(void);
-} my_builtins;*/
-
 
  /* Funtions */
 
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
+char *_strcat(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
 
 #endif /* MAIN_H */

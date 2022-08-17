@@ -4,10 +4,9 @@
 /*#include "main.h"*/
 
 /**
- * _getline - check code
- * @line: pointer buffer - string
- * @lineSize: size pointer buffer
- * Return: always 0
+ * getStringLen - check code
+ * @str: pointer buffer - string
+ * Return: always i
  */
 
 int getStringLen(char *str)
@@ -19,7 +18,12 @@ int getStringLen(char *str)
 	return (i);
 }
 
-char _prompt()
+/**
+ * _prompt - check list
+ * Return: always 0
+ */
+
+char _prompt(void)
 {
 	char *prompt = "$ ";
 	/*write conventional output fot the user to see*/

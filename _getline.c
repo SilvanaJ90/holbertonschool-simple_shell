@@ -5,16 +5,16 @@
 
 /**
  * _getline - check code
- * @line: pointer buffer - string
- * @lineSize: size pointer buffer
- * Return: always 0
+ * @characterRead: value read _getline
+ * Return: buffer
  */
 
-char * _getline(ssize_t *characterRead)
+char *_getline(ssize_t *characterRead)
 {
 	char *line = NULL;
 	size_t lineSize = 0;
 
 	*characterRead = getline(&line, &lineSize, stdin);
+	write(STDOUT_FILENO, line, characterRead);
 	return (line);
 }
