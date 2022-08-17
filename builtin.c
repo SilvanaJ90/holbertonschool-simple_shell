@@ -7,7 +7,7 @@ void _builtin(char **args)
 	int i;
 
 	struct builtin builtins[] = {
-			{"exit", _exit},
+			{"exit", _eexit},
 			{"cd", _cd},
 			{"help", _help},
 			{"env", _env},

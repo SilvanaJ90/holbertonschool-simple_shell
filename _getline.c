@@ -15,6 +15,6 @@ char *_getline(ssize_t *characterRead)
 	size_t lineSize = 0;
 
 	*characterRead = getline(&line, &lineSize, stdin);
-	write(STDOUT_FILENO, line, characterRead);
+	write(STDOUT_FILENO, line, *characterRead);
 	return (line);
 }

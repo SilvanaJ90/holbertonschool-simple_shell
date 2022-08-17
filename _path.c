@@ -25,12 +25,12 @@ char *_path(char *command)
 	if (path)
 	{
 		copyPath = strdup(path);
-		commandLen = _strlen(command);
-		pathToken = _strtok(copyPath, ":");
+		commandlen = _strlen(command);
+		pathToken = strtok(copyPath, ":");
 		while (pathToken != NULL)
 		{
 			dirLen = _strlen(pathToken);
-			dir = malloc(dirLen + commandLen + 2);
+			dir = malloc(dirLen +  commandlen + 2);
 			_strcat(dir, pathToken);
 			_strcat(dir, "/");
 			_strcat(dir, command);
@@ -45,7 +45,7 @@ char *_path(char *command)
 			pathToken = strtok(NULL, ":");
 		}
 		free(copyPath);
-		if (stat(command, &testfile) == 0)
+		if (stat(command, &tesfile) == 0)
 			return (command);
 		return (NULL);
 	}
