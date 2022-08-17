@@ -14,25 +14,19 @@ int main(void)
 {
 	ssize_t characterRead = 0;
 	char **tokens, *line = NULL;
-	char cmd[100], command[100], *parameters[20];
-	char *envp[] ={(char *) "PATH=/usr/bin", 0};
-	/*int codeExecute = 0;*/
-	/*char *line = NULL;*/
+	int codeExecute = 0;
 
 	while (1)
 	{
 		_prompt();
 		line = _getline(&characterRead);
+		if (characterRead == -1)
+			exit(EXIT_FAILURE);
 		tokens = _strtok(line, characterRead);
-		if (fork() != 0)
-			wait (NULL);
-		else
-		{
-			_strcpy (cmd, "/usr/bin");
-			_strcat(cmd, command);
-			execve(cmd, parameters, envp);
-		}
-		if (_strcmp (command, "exit") == 0 )
-			break;
+		if (tokens[0] != NULL)
+			codeExecute = _execute(tokens);
+		free(tokens);
+		free(line);
 	}
+	return (codeExecute);
 }

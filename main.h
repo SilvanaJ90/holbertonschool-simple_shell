@@ -12,8 +12,14 @@ char *_getline(ssize_t *characterRead);
 char **_strtok(char *line, ssize_t characterRead);
 int _execute(char **tokens);
 
+
 /*global value*/
 extern char **environ;
+
+struct builtin {
+    char *name;
+    void (*func)(char **args);
+};
 
  /* Funtions */
 
@@ -21,5 +27,13 @@ char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
+
+/*Builtin */
+char *_path(char *command);
+void _builtin(char **args);
+void _eexit(char **args);
+void _cd(char **args);
+void _help(char **args);
+void _env(char **args);
 
 #endif /* MAIN_H */
