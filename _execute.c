@@ -7,6 +7,7 @@ int _execute(char **tokens)
 {
 	pid_t cPid;
 	char *command, **envp;
+
 	envp = environ;
 	/*comprueba si el comando es un comando integrado*/
 	_builtin(tokens);
@@ -21,9 +22,11 @@ int _execute(char **tokens)
 		perror(tokens[0]);
 		return (EXIT_SUCCESS);
 	}
-	else if (cPid > 0)	{
+	else if (cPid > 0)
+	{
 		int status;
-		do{
+
+		do {
 			waitpid(cPid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
