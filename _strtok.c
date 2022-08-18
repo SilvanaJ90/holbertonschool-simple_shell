@@ -28,7 +28,7 @@ char **_strtok(char *line, ssize_t characterRead)
 	}
 	characterToken++;
 	/*assig space for token we count on while */
-	argv = malloc(sizeof(char *) * characterToken);
+	argv = malloc(sizeof(char *) * characterToken + 2);
 	token = strtok(copy_line, delim);
 	while (token != NULL)
 	{
