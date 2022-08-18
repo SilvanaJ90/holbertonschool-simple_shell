@@ -16,7 +16,10 @@ int _execute(char **tokens)
 
 	envp = environ;
 	/*comprueba si el comando es un comando integrado*/
-	_builtin(tokens);
+	if (_builtin(tokens) == EXIT_SUCCESS)
+	{
+		return (EXIT_SUCCESS);
+	}
 	/*_builtin(args);*/
 	/*comprueba si existe el comando y genera las rutas para el comand */
 	command = _pathSh(tokens[0]);
