@@ -9,7 +9,7 @@
  * Return: always 0
  */
 
-char *_path(char *command)
+char *_pathSh(char *command)
 {
 	char *path, *copyPath, *pathToken, *dir;
 	int commandlen, dirLen;
