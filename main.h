@@ -16,9 +16,18 @@ int _execute(char **tokens);
 /*global value*/
 extern char **environ;
 
-struct builtin {
-    char *name;
-    void (*func)(char **args);
+/**
+ * struct builtin - simple shell
+ * @name: value
+ * @func: value
+ *
+ * Description: simple shell
+ */
+
+struct builtin
+{
+	char *name;
+	void (*func)(char **args);
 };
 
  /* Funtions */

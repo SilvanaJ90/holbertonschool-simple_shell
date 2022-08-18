@@ -4,11 +4,9 @@
 #include <unistd.h>
 
 /**
- *
- *
- *
- *
- *
+ * _path - check code
+ * @command: value
+ * Return: always 0
  */
 
 char *_path(char *command)
@@ -36,7 +34,7 @@ char *_path(char *command)
 			_strcat(dir, command);
 			_strcat(dir, "\0");
 
-			if(stat(dir, &tesfile) == 0)
+			if (stat(dir, &tesfile) == 0)
 			{
 				free(copyPath);
 				return (dir);

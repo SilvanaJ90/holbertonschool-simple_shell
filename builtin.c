@@ -6,11 +6,6 @@
  * @args: value
  */
 
-/**
- * struct - check code
- * @builtins: value
- */
-
 void _builtin(char **args)
 {
 	int numBuiltin = 0;
