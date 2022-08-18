@@ -10,7 +10,7 @@
  * Return: always 0
  */
 
-char **_strtok(char *line, ssize_t characterRead)
+char **gen_strtok(char *line, ssize_t characterRead)
 {
 	char *copy_line = NULL, *token, **argv;
 	char *delim = " \n";
@@ -37,6 +37,8 @@ char **_strtok(char *line, ssize_t characterRead)
 		i++;
 		token = strtok(NULL, delim);
 	}
+	free(copy_line);
+	free(argv);
 	argv[i] = NULL;
 	i = 0;
 	return (argv);
