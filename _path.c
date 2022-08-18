@@ -23,16 +23,16 @@ char *_path(char *command)
 	if (path)
 	{
 		copyPath = strdup(path);
-		commandlen = strlen(command);
+		commandlen = _strlen(command);
 		pathToken = strtok(copyPath, ":");
 		while (pathToken != NULL)
 		{
-			dirLen = strlen(pathToken);
+			dirLen = _strlen(pathToken);
 			dir = malloc(dirLen +  commandlen + 2);
-			strcat(dir, pathToken);
-			strcat(dir, "/");
-			strcat(dir, command);
-			strcat(dir, "\0");
+			_strcpy(dir, pathToken);
+			_strcat(dir, "/");
+			_strcat(dir, command);
+			_strcat(dir, "\0");
 
 			if (stat(dir, &tesfile) == 0)
 			{
