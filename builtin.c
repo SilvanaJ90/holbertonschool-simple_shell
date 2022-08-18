@@ -1,4 +1,5 @@
-#include "main.h"
+#
+include "main.h"
 #include <stdlib.h>
 
 /**
@@ -12,6 +13,7 @@ void _builtin(char **args)
 {
 	int numBuiltin = 0;
 	int i;
+<<<<<<< HEAD
 
 	  struct builtin builtins[] = {
         {"exit",_eexit},
@@ -21,6 +23,17 @@ void _builtin(char **args)
     };
 
 
+=======
+/**
+ * struct builtin - check code
+ */
+	struct builtin builtins[] = {
+			{"exit", _eexit},
+			{"cd", _cd},
+			{"help", _help},
+			{"env", _env},
+	};
+>>>>>>> 6dd5842 (update-betty)
 	numBuiltin = sizeof(builtins) / sizeof(struct builtin);
 
 	for (i = 0; i < numBuiltin; i++)
@@ -62,7 +75,6 @@ void _cd(char **args)
 		}
 	}
 }
-
 
 /**
  * _help -check code
