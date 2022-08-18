@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 /**
- * _path - check code
+ * _pathSh - check code
  * @command: value
  * Return: always 0
  */
