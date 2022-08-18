@@ -3,6 +3,12 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/**
+ * _execute - check code
+ * @args: value matriz pointer
+ * Return: always 0
+ */
+
 int _execute(char **args)
 {
 	pid_t cPid;

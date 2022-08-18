@@ -28,7 +28,7 @@ typedef struct builtin
 {
 	char *name;
 	void (*func)(char **args);
-}builtin;
+} builtin;
 
  /* Funtions */
 
