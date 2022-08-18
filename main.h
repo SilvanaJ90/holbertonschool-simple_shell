@@ -24,11 +24,11 @@ extern char **environ;
  * Description: simple shell
  */
 
-struct builtin
+typedef struct builtin
 {
 	char *name;
 	void (*func)(char **args);
-};
+}builtin;
 
  /* Funtions */
 
@@ -39,7 +39,7 @@ int _strcmp(char *s1, char *s2);
 
 /*Builtin */
 char *_path(char *command);
-void _builtin(char **args);
+int _builtin(char **args);
 void _eexit(char **args);
 void _cd(char **args);
 void _help(char **args);

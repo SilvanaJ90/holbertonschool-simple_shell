@@ -3,21 +3,22 @@
 /**
  * _builtin -check code
  * @args: value
+ * Return: always 0
  */
 
 
 
-void _builtin(char **args)
+int _builtin(char **args)
 {
 	int numBuiltin = 0;
 	int i;
 
-	  struct builtin builtins[] = {
-        {"exit", _eexit},
-        {"cd", _cd},
-        {"help", _help},
-        {"env", _env},
-    };
+	builtin builtins[] = {
+		{"exit", _eexit},
+		{"cd", _cd},
+		{"help", _help},
+		{"env", _env},
+	};
 
 
 	numBuiltin = sizeof(builtins) / sizeof(struct builtin);
@@ -27,9 +28,10 @@ void _builtin(char **args)
 		if (_strcmp(args[0], builtins[i].name) == 0)
 		{
 			builtins[i].func(args);
-			return;
+			return (EXIT_SUCCESS);
 		}
 	}
+	return (EXIT_FAILURE);
 }
 
 /**
