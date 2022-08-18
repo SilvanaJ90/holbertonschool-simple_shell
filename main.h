@@ -9,7 +9,7 @@
 int getStringLen(char *str);
 char _prompt(void);
 char *_getline(ssize_t *characterRead);
-char **gen_strtok(char *line, ssize_t characterRead);
+char **_strtok(char *line, ssize_t characterRead);
 int _execute(char **tokens);
 
 

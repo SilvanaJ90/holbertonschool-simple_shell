@@ -2,7 +2,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/stat.h>
 
 /**
  * _execute - check code
@@ -17,10 +16,7 @@ int _execute(char **tokens)
 
 	envp = environ;
 	/*comprueba si el comando es un comando integrado*/
-	if (_builtin(tokens) == EXIT_SUCCESS)
-	{
-		return (EXIT_SUCCESS);
-	}
+	_builtin(tokens);
 	/*_builtin(args);*/
 	/*comprueba si existe el comando y genera las rutas para el comand */
 	command = _pathSh(tokens[0]);
@@ -34,7 +30,7 @@ int _execute(char **tokens)
 	}
 	else if (cPid > 0)
 	{
-		int status = 0;
+		int status;
 
 		do {
 			waitpid(cPid, &status, WUNTRACED);
@@ -43,6 +39,7 @@ int _execute(char **tokens)
 	else
 	{
 		perror("shell");
+		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }

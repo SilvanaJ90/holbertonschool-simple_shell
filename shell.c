@@ -23,7 +23,7 @@ int main(void)
 		line = _getline(&characterRead);
 		if (characterRead == -1)
 			exit(EXIT_FAILURE);
-		tokens = gen_strtok(line, characterRead);
+		tokens = _strtok(line, characterRead);
 		if (tokens[0] != NULL)
 			codeExecute = _execute(tokens);
 		free(tokens);
