@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 /**
  * _execute - check code
@@ -33,7 +34,7 @@ int _execute(char **tokens)
 	}
 	else if (cPid > 0)
 	{
-		int status;
+		int status = 0;
 
 		do {
 			waitpid(cPid, &status, WUNTRACED);
@@ -42,7 +43,6 @@ int _execute(char **tokens)
 	else
 	{
 		perror("shell");
-		return (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	return (status);
 }
