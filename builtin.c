@@ -6,8 +6,6 @@
  * Return: always 0
  */
 
-
-
 int _builtin(char **args)
 {
 	int numBuiltin = 0;
@@ -25,7 +23,7 @@ int _builtin(char **args)
 
 	for (i = 0; i < numBuiltin; i++)
 	{
-		if (strcmp(args[0], builtins[i].name) == 0)
+		if (_strcmp(args[0], builtins[i].name) == 0)
 		{
 			builtins[i].func(args);
 			return (EXIT_SUCCESS);
@@ -42,7 +40,7 @@ int _builtin(char **args)
 void _eexit(char **args)
 {
 	(void)args;
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -54,7 +52,7 @@ void _cd(char **args)
 {
 	if (args[1] == NULL)
 	{
-		fprintf(stderr, "hsh: cd: missing argument\n");
+		write(STDERR_FILENO, "hsh: cd: missing argument\n", 2);
 	} else
 	{
 		if (chdir(args[1]) != 0)

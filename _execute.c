@@ -5,28 +5,27 @@
 
 /**
  * _execute - check code
- * @args: value matriz pointer
+ * @tokens: value matriz pointer
  * Return: always 0
  */
 
-int _execute(char **args)
+int _execute(char **tokens)
 {
 	pid_t cPid;
 	char *command = NULL, **envp = NULL;
 
 	envp = environ;
 	/*comprueba si el comando es un comando integrado*/
-	if (_builtin(args) == EXIT_SUCCESS)
-		return (EXIT_FAILURE);
+	_builtin(tokens);
 	/*_builtin(args);*/
 	/*comprueba si existe el comando y genera las rutas para el comand */
-	command = _path(args[0]);
+	command = _pathSh(tokens[0]);
 	if (command == NULL)
 		return (EXIT_FAILURE);
 	cPid = fork(); /*crea un nuevo proceso hijo */
 	if (cPid == 0)
 	{
-		execve(args[0], args, envp);
+		execve(command, tokens, envp);
 		exit(EXIT_SUCCESS);
 	}
 	else if (cPid > 0)

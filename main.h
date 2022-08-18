@@ -38,7 +38,7 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 
 /*Builtin */
-char *_path(char *command);
+char *_pathSh(char *command);
 int _builtin(char **args);
 void _eexit(char **args);
 void _cd(char **args);
