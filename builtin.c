@@ -25,7 +25,7 @@ int _builtin(char **args)
 
 	for (i = 0; i < numBuiltin; i++)
 	{
-		if (_strcmp(args[0], builtins[i].name) == 0)
+		if (strcmp(args[0], builtins[i].name) == 0)
 		{
 			builtins[i].func(args);
 			return (EXIT_SUCCESS);

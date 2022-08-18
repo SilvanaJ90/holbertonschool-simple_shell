@@ -18,7 +18,8 @@ int main(void)
 
 	while (1)
 	{
-		_prompt();
+		if (isatty(STDIN_FILENO))
+			_prompt();
 		line = _getline(&characterRead);
 		if (characterRead == -1)
 			exit(EXIT_FAILURE);
