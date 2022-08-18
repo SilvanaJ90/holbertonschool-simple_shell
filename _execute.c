@@ -44,5 +44,5 @@ int _execute(char **tokens)
 	{
 		perror("shell");
 	}
-	return (status);
+	return (EXIT_SUCCESS);
 }
