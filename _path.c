@@ -22,7 +22,7 @@ char *_pathSh(char *command)
 	path = getenv("PATH");
 	if (path)
 	{
-		copyPath = strdup(path);
+		copyPath = _strdup(path);
 		commandlen = _strlen(command);
 		pathToken = strtok(copyPath, ":");
 		while (pathToken != NULL)

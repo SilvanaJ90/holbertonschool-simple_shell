@@ -84,3 +84,36 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (s1[i] - s2[i]);
 }
+
+/**
+ * _strdup - check code
+ * @str: value string
+ * Return: new Pointer
+ */
+
+char *_strdup(char *str)
+
+{
+	int x;
+	int y;
+	char *newstr;
+
+	if (str == NULL)
+		return (NULL);
+
+	for (x = 0; str[x] != '\0'; x++)
+	{
+	}
+	x++;
+	newstr = malloc(sizeof(char) * (x + 1));
+
+	if (newstr == NULL)
+		return (NULL);
+
+	for (y = 0; y < x; y++)
+	{
+		newstr[y] = str[y];
+	}
+	newstr[y] = '\0';
+	return (newstr);
+}
