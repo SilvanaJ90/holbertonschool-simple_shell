@@ -38,7 +38,6 @@ char **_strtok(char *line, ssize_t characterRead)
 		token = strtok(NULL, delim);
 	}
 	argv[i] = NULL;
-	printf("The user type %d number of tokens \n", i);
 	i = 0;
 	return (argv);
 }

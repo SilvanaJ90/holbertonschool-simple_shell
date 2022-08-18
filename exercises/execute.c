@@ -18,7 +18,7 @@ int getStringLen(char *str)
 	return (i);
 }
 
-int main (void)
+int main(void)
 {
 	char *prompt = "$ ", *line = NULL, *copy_line = NULL, *token;
 	char *delim = " \n", **text;
@@ -59,14 +59,8 @@ int main (void)
 		}
 		text[i] = NULL;
 		i = 0;
-		/*if(!pid)
-		{*/
 		if (execve(argv[0], text, NULL) == -1)
-				perror("Error:");
-			/*else
-			{
-				wait();
-				}*/
+			perror("Error:");
 	}
 	return (EXIT_SUCCESS);
 }

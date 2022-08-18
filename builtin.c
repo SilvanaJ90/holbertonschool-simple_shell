@@ -6,17 +6,21 @@
  * @args: value
  */
 
+
+
 void _builtin(char **args)
 {
 	int numBuiltin = 0;
 	int i;
 
-	struct builtin builtins[] = {
-			{"exit", _eexit},
-			{"cd", _cd},
-			{"help", _help},
-			{"env", _env},
-	};
+	  struct builtin builtins[] = {
+        {"exit",_eexit},
+        {"cd", _cd},
+        {"help", _help},
+        {"env", _env},
+    };
+
+
 	numBuiltin = sizeof(builtins) / sizeof(struct builtin);
 
 	for (i = 0; i < numBuiltin; i++)
