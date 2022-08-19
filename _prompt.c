@@ -27,6 +27,7 @@ int getStringLen(char *str)
 char _prompt(void)
 {
 	char *prompt = "$ ";
+
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, prompt, getStringLen(prompt));
 	return (EXIT_SUCCESS);

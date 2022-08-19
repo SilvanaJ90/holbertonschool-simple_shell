@@ -30,7 +30,7 @@ char *_pathSh(char *command)
 			dirLen = _strlen(pathToken) + commandlen + 1;
 			dir = malloc(sizeof(char) * dirLen + 1);
 			if (!dir)
-				return(NULL);
+				return (NULL);
 			_strcpy(dir, pathToken);
 			_strcat(dir, "/");
 			_strcat(dir, command);

@@ -16,7 +16,7 @@ int main(void)
 	char *line = NULL;
 	int status = 0;
 	char *prompt = "$ ";
-	char ** tokens = NULL;
+	char **tokens = NULL;
 
 	while (1)
 	{

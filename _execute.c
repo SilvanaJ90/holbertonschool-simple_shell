@@ -6,6 +6,7 @@
 /**
  * _execute - check code
  * @tokens: value matriz pointer
+ * @status: value status
  * Return: always 0
  */
 
@@ -15,7 +16,7 @@ int _execute(char **tokens, int status)
 	char *command = NULL;
 
 	/*comprueba si el comando es un comando integrado*/
-	if(_builtin(tokens) == EXIT_SUCCESS)
+	if (_builtin(tokens) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);
 	/*_builtin(args);*/
 	/*comprueba si existe el comando y genera las rutas para el comand */
