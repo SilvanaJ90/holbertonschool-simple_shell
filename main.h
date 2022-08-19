@@ -12,12 +12,11 @@ char *_getline(ssize_t *characterRead);
 char **_strtok(char *line, ssize_t characterRead);
 int _execute(char **tokens, int status);
 
-
 /*global value*/
 extern char **environ;
 
 /**
- * struct builtin - simple shell
+ * struct builtin - simple shelly
  * @name: value
  * @func: value
  *

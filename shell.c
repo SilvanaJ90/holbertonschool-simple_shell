@@ -13,7 +13,7 @@
 int main(void)
 {
 	ssize_t characterRead = 0;
-	char **tokens, *line = NULL;
+	char **tokens = NULL, *line = NULL;
 	int status = 0;
 	char *prompt = "$ ";
 
@@ -24,15 +24,9 @@ int main(void)
 		line = _getline(&characterRead);
 		if (characterRead == -1)
 			exit(EXIT_FAILURE);
-		if (_strcmp(line, "exit") == 0)
-		{
-			free(line);
-			exit(WEXITSTATUS(status));
-		}
-		tokens = _strtok(line, characterRead);
-		if (tokens[0] != NULL)
-			status = _execute(tokens, status);
-		free(tokens);
+		tokens =_strtok(line, characterRead);
+		status = _execute(tokens, status);
+		free(line);
 	}
 	return (WEXITSTATUS(status));
 }
