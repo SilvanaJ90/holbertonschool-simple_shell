@@ -11,24 +11,26 @@
 
 char *_pathSh(char *command)
 {
-	char *path, *copyPath, *pathToken, *dir;
-	int commandlen, dirLen;
+	char *path, *copyPath = NULL, *pathToken = NULL, *dir = NULL;
+	int commandlen = _strlen(command), dirLen = 0;
 	struct stat tesfile;
 
-	if (command[0] == '/' || command[0] == '.')
-		if (stat(command, &tesfile) == 0)
-			return (command);
+	if (stat(command, &tesfile) == 0)
+		return (command);
 
 	path = getenv("PATH");
 	if (path)
 	{
 		copyPath = _strdup(path);
-		commandlen = _strlen(command);
+		if (!copyPath)
+			return (NULL);
 		pathToken = strtok(copyPath, ":");
 		while (pathToken != NULL)
 		{
-			dirLen = _strlen(pathToken);
-			dir = malloc(dirLen +  commandlen + 2);
+			dirLen = _strlen(pathToken) + commandlen + 1;
+			dir = malloc(sizeof(char) * dirLen + 1);
+			if (!dir)
+				return(NULL);
 			_strcpy(dir, pathToken);
 			_strcat(dir, "/");
 			_strcat(dir, command);
@@ -43,8 +45,6 @@ char *_pathSh(char *command)
 			pathToken = strtok(NULL, ":");
 		}
 		free(copyPath);
-		if (stat(command, &tesfile) == 0)
-			return (command);
 		return (NULL);
 	}
 	return (NULL);

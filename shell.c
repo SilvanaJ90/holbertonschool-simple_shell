@@ -13,9 +13,10 @@
 int main(void)
 {
 	ssize_t characterRead = 0;
-	char **tokens = NULL, *line = NULL;
+	char *line = NULL;
 	int status = 0;
 	char *prompt = "$ ";
+	char ** tokens = NULL;
 
 	while (1)
 	{
@@ -24,7 +25,7 @@ int main(void)
 		line = _getline(&characterRead);
 		if (characterRead == -1)
 			exit(EXIT_FAILURE);
-		tokens =_strtok(line, characterRead);
+		tokens = _strtok(line, characterRead);
 		status = _execute(tokens, status);
 		free(line);
 	}
