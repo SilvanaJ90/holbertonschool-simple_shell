@@ -15,7 +15,8 @@ int _execute(char **tokens, int status)
 	char *command = NULL, **envp = NULL;
 	envp = environ;
 	/*comprueba si el comando es un comando integrado*/
-	_builtin(tokens);
+	if(_builtin(tokens) == EXIT_SUCCESS)
+		return (EXIT_SUCCESS);
 	/*_builtin(args);*/
 	/*comprueba si existe el comando y genera las rutas para el comand */
 	command = _pathSh(tokens[0]);
@@ -33,8 +34,8 @@ int _execute(char **tokens, int status)
 		do {
 			waitpid(cPid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		if (_strcmp(command, tokens[0]))
+			free(command);
 	}
-	else
-		perror("shell");
 	return (status);
 }

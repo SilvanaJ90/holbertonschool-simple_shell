@@ -37,10 +37,9 @@ int _builtin(char **args)
  * @args: value
  */
 
-void _eexit(char **args)
+void _eexit(char **args __attribute__((unused)))
 {
-	(void)args;
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 
 /**
@@ -52,7 +51,7 @@ void _cd(char **args)
 {
 	if (args[1] == NULL)
 	{
-		write(STDERR_FILENO, "hsh: cd: missing argument\n", 2);
+		fprintf(stderr, "hsh: cd: missing argument\n");
 	} else
 	{
 		if (chdir(args[1]) != 0)
@@ -68,7 +67,7 @@ void _cd(char **args)
  * @args: value
  */
 
-void _help(char **args)
+void _help(char **args __attribute__((unused)))
 {
 	char *helptext =
 		"The following commands are available:\n"
@@ -76,7 +75,6 @@ void _help(char **args)
 		"  exit     Exit the shell.\n"
 		"  help     Print this help text.\n";
 	printf("%s", helptext);
-	(void)args;
 }
 
 /**
@@ -84,11 +82,12 @@ void _help(char **args)
  * @args: value
  */
 
-void _env(char **args)
+void _env(char **args __attribute__((unused)))
 {
 	char **env = environ;
+	int i = 0;
 
-	while (*env)
-		printf("%s\n", *env++);
-	(void)args;
+	while (env[i])
+		printf("%s\n", env[i]);
+	i++;
 }
