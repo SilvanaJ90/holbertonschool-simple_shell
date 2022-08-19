@@ -10,7 +10,7 @@ int getStringLen(char *str);
 char _prompt(void);
 char *_getline(ssize_t *characterRead);
 char **_strtok(char *line, ssize_t characterRead);
-int _execute(char **tokens);
+int _execute(char **tokens, int status);
 
 
 /*global value*/

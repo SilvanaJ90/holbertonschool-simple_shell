@@ -14,20 +14,21 @@ int main(void)
 {
 	ssize_t characterRead = 0;
 	char **tokens, *line = NULL;
-	int codeExecute = 0;
+	int status = 0;
+	char *prompt = "$ ";
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			_prompt();
+			write(STDOUT_FILENO, prompt, getStringLen(prompt));
 		line = _getline(&characterRead);
 		if (characterRead == -1)
 			exit(EXIT_FAILURE);
 		tokens = _strtok(line, characterRead);
 		if (tokens[0] != NULL)
-			codeExecute = _execute(tokens);
+			status = _execute(tokens, status);
 		free(tokens);
 		free(line);
 	}
-	return (codeExecute);
+	return (WEXITSTATUS(status));
 }

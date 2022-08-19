@@ -9,11 +9,10 @@
  * Return: always 0
  */
 
-int _execute(char **tokens)
+int _execute(char **tokens, int status)
 {
 	pid_t cPid;
 	char *command = NULL, **envp = NULL;
-	int status = 0;
 	envp = environ;
 	/*comprueba si el comando es un comando integrado*/
 	_builtin(tokens);
@@ -22,11 +21,12 @@ int _execute(char **tokens)
 	command = _pathSh(tokens[0]);
 	if (command == NULL)
 		return (EXIT_FAILURE);
+
 	cPid = fork(); /*crea un nuevo proceso hijo */
+
 	if (cPid == 0)
 	{
 		execve(command, tokens, envp);
-		exit(EXIT_SUCCESS);
 	}
 	else if (cPid > 0)
 	{
