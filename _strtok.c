@@ -38,6 +38,7 @@ char **_strtok(char *line, ssize_t characterRead)
 		token = strtok(NULL, delim);
 	}
 	argv[i] = NULL;
+	free(copy_line);
 	i = 0;
 	return (argv);
 }
